@@ -45,15 +45,6 @@ Before running the application, complete these essential setup steps:
    - Create new app → Select "Server-to-Server OAuth"
    - Obtain: Account ID, Client ID, Client Secret
 4. **Configure Required Scopes**:
-   ```
-   meeting:write:invite_links:admin
-   meeting:write:meeting:admin
-   meeting:write:meeting:master
-   meeting:write:invite_links:master
-   meeting:write:open_app:admin
-   user:read:email:admin
-   user:read:list_users:admin
-   ```
 
 ### 🔑 Google Cloud API
 1. **Get Gemini API Key**:
@@ -134,6 +125,3 @@ Enable debug logging by adding print statements or using the built-in error hand
 - **Video Interview Capability**: Automated video interview scheduling
 - **Skills Assessment**: Integrated coding challenges and technical tests
 - **Multi-language Support**: Resume analysis in multiple languages
-- **Analytics Dashboard**: Recruitment metrics and insights
-- **Bulk Processing**: Handle multiple resumes simultaneously
-- **Custom Role Creation**: User-defined role requirements
