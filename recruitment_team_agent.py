@@ -6,7 +6,6 @@ import requests
 import PyPDF2
 from datetime import datetime, timedelta
 import pytz
-
 import streamlit as st
 from agno.agent import Agent
 from agno.models.google import Gemini
@@ -109,14 +108,14 @@ def init_session_state() -> None:
 
 def create_resume_analyzer() -> Agent:
     """Creates and returns a resume analysis agent."""
-    if not st.session_state.openai_api_key:
+    if not st.session_state.gemini_api_key:
         st.error("Please enter your Google Cloud API first.")
         return None
 
     return Agent(
         model=Gemini(
             id="gemini-2.0-pro",
-            api_key=st.session_state.openai_api_key
+            api_key=st.session_state.gemini_api_key
         ),
         description="You are an expert technical recruiter who analyzes resumes.",
         instructions=[
@@ -165,8 +164,8 @@ def create_scheduler_agent() -> Agent:
     return Agent(
         name="Interview Scheduler",
         model=Gemini(
-            id="gemini-2.0-pro",
-            api_key=st.session_state.openai_api_key
+            id="gemini-2.0-flash",
+            api_key=st.session_state.gemini_api_key
         ),
         tools=[zoom_tools],
         description="You are an interview scheduling coordinator.",
@@ -527,7 +526,7 @@ def main() -> None:
     # Reset button
     if st.sidebar.button("Reset Application"):
         for key in st.session_state.keys():
-            if key != 'openai_api_key':
+            if key != 'gemini_api_key':
                 del st.session_state[key]
         st.rerun()
 
